@@ -1,0 +1,78 @@
+server:
+  servlet:
+    context-path: /mail-producer
+    session:
+      timeout: 900s
+  port: 8001
+
+# spring config
+spring:
+  http:
+    encoding:
+      charset: utf-8
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+    default-property-inclusion: NON_NULL
+
+druid:
+  # druid config
+  type: com.alibaba.druid.pool.DruidDataSource
+  master:
+   url: jdbc:mysql://192.168.1.77:3306/viscum?useUnicode=true&characterEncoding=utf-8&autoReconnect=true
+   driverClassName: com.mysql.jdbc.Driver
+   username: root
+   password: 123456
+   initialSize: 5
+   minIdle: 5
+   maxActive: 20
+   maxWait: 60000
+   timeBetweenEvictionRunsMillis: 60000
+   minEvictableIdleTimeMillis: 300000
+   validationQuery: SELECT 1 FROM DUAL
+   testWhileIdle: true
+   testOnBorrow: false
+   testOnReturn: false
+   poolPreparedStatements: true
+   maxPoolPreparedStatementPerConnectionSize: 20
+   #filters: stat,wall,log4j
+   #connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+   useGlobalDataSourceStat: true
+  slave:
+   url: jdbc:mysql://192.168.1.78:3306/viscum?useUnicode=true&characterEncoding=utf-8&autoReconnect=true
+   driverClassName: com.mysql.jdbc.Driver
+   username: root
+   password: 123456
+   initialSize: 5
+   minIdle: 5
+   maxActive: 20
+   maxWait: 60000
+   timeBetweenEvictionRunsMillis: 60000
+   minEvictableIdleTimeMillis: 300000
+   validationQuery: SELECT 1 FROM DUAL
+   testWhileIdle: true
+   testOnBorrow: false
+   testOnReturn: false
+   poolPreparedStatements: true
+   maxPoolPreparedStatementPerConnectionSize: 20
+   #filters: stat,wall,log4j
+   #connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+   useGlobalDataSourceStat: true
+
+mybatis:
+  type-aliases-package: com.bhz.mail.entity
+  mapper-locations: classpath*:com/bhz/mail/mapping/*.xml
+
+logging:
+  level:
+    tk.mybatis: TRACE
+
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+
+
+
+

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+	<appender name="STDOUT" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%-5p %d{MM-dd HH:mm:ss,SSS} %t %m  (%F:%L) \n" />
+		</layout>
+	</appender>
+	<!-- 输出日志到文件  文件大小到达指定尺寸的时候产生一个新的文件 -->  
+    <appender name="railyFile"  class="org.apache.log4j.RollingFileAppender">  
+       	<param name="File" value="D:/log/"></param>
+        <!-- <param name="File" value="d:/logs/shanghe/manyibao.log"></param> --> 
+        <param name="MaxFileSize" value="51200KB"></param>  
+        <param name="MaxBackupIndex" value="100"></param>  
+        <layout class="org.apache.log4j.PatternLayout">  
+            <param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss\} %-5p] [%t] {%c:%L}-%m%n"></param>  
+        </layout> 
+    </appender>
+	<logger name="java.sql.ResultSet">
+		<level value="trace" />
+		<appender-ref ref="STDOUT" />
+	</logger>
+	<logger name="org.apache.ibatis">
+		<level value="debug" />
+		<appender-ref ref="STDOUT" />
+	</logger>
+	<logger name="org.apache.activemq.transport">
+		<level value="info" />
+		<appender-ref ref="STDOUT" />
+	</logger>
+	<root>
+		<level value="debug" />
+		<appender-ref ref="STDOUT" />
+		<appender-ref ref="railyFile" />
+	</root>
+</log4j:configuration>

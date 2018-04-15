@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace必须是接口的全类名  -->
+<mapper namespace="com.viscum.mapper.UserMapper">
+    <resultMap id="BaseResultMap" type="com.viscum.entity.User">
+        <id column="USERID" property="userId" jdbcType="VARCHAR" />
+        <result column="USERNAME" property="username" jdbcType="VARCHAR" />
+        <result column="USERPHONE" property="userphone" jdbcType="VARCHAR" />
+    </resultMap>
+    <sql id="Base_Column_List">
+        USERID,USERNAME,USERPHONE
+    </sql>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/> FROM WST_USERS LIMIT 10
+    </select>
+
+</mapper>
