@@ -7,6 +7,15 @@
 	<artifactId>springboot</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
+	<modules>
+		<module>chapter01</module>
+		<module>chapter02</module>
+		<module>chapter03</module>
+		<module>chapter04</module>
+		<module>chapter05</module>
+		<module>mail-producer</module>
+		<module>springboot-mybatis</module>
+	</modules>
 
 	<name>springboot</name>
 	<description>Demo project for Spring Boot</description>
