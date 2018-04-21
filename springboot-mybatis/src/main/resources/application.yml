@@ -5,9 +5,9 @@ server:
 spring:
   datasource:
         name: test
-        url: jdbc:mysql://192.168.1.31:3306/mall_local
+        url: jdbc:mysql://122.114.217.151:3306/mall
         username: root
-        password: root
+        password: 123456
         driver-class-name: com.mysql.jdbc.Driver
         filters: stat
         maxActive: 20

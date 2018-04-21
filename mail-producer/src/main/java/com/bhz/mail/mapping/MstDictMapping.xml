@@ -13,7 +13,7 @@
     </sql>
 
     <select id="findById" resultMap="BaseResultMap">
-        SELECT * FROM WHERE ID=#{id,jdbcType=VARCHAR}
+        SELECT * FROM MST_DICT WHERE ID=#{id,jdbcType=VARCHAR}
     </select>
 
 </mapper>
