@@ -6,6 +6,7 @@ import com.viscum.constant.Const;
 import com.viscum.exception.FailException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
@@ -14,12 +15,18 @@ import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
+import java.net.InetSocketAddress;
 import java.net.Proxy;
 import java.net.URL;
 import java.security.MessageDigest;
 import java.util.*;
 
 public class HttpClientUtil {
+
+	@Value("${proxy.ip}")
+	private static String ip;
+	@Value("${proxy.port}")
+	private static int port;
 
 	private static Logger logger = LoggerFactory.getLogger(HttpClientUtil.class);
 
@@ -36,7 +43,7 @@ public class HttpClientUtil {
 			sb.append("&" + key + "=" + postData.get(key));
 		}
 		logger.info("上送的参数:" + sb.toString());
-		Map rs = callAPI(url, sb.toString(), true,true);
+		Map rs = callAPI(url, sb.toString(), true, true);
 		if (rs == null) {
 			throw new FailException("", "");
 		}
@@ -58,12 +65,8 @@ public class HttpClientUtil {
 		Proxy proxy = null;
 
 		if (isProxy) {// 使用代理
-//			String wxProxyIp = WeixinStandard.getPropertiesValue("wxProxyIp"); // 代理ip
-//			int wxProxyPort = Integer.parseInt(WeixinStandard
-//					.getPropertiesValue("wxProxyPort"));// 代理代口3128
-//			proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress(wxProxyIp,
-//					wxProxyPort));
-//			logger.info("通过代理建立连接:" + wxProxyIp + ":" + wxProxyPort);
+			proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress(ip, port));
+			logger.info("通过代理建立连接:{}", ip, ":{}", port);
 		}
 
 		Map returnMap = new HashMap();
