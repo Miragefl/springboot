@@ -1,10 +1,7 @@
 package com.viscum;
 
-import com.alibaba.fastjson.JSONObject;
 import com.viscum.entity.User;
 import com.viscum.mapper.UserMapper;
-import com.viscum.utils.HttpClientUtil;
-import org.apache.commons.io.FileUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
