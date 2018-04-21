@@ -19,7 +19,7 @@ druid:
   # druid config
   type: com.alibaba.druid.pool.DruidDataSource
   master:
-   url: jdbc:mysql://192.168.1.77:3306/viscum?useUnicode=true&characterEncoding=utf-8&autoReconnect=true
+   url: jdbc:mysql://192.168.1.77:3306/mail?useUnicode=true&characterEncoding=utf-8&autoReconnect=true
    driverClassName: com.mysql.jdbc.Driver
    username: root
    password: 123456
@@ -39,7 +39,7 @@ druid:
    #connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
    useGlobalDataSourceStat: true
   slave:
-   url: jdbc:mysql://192.168.1.78:3306/viscum?useUnicode=true&characterEncoding=utf-8&autoReconnect=true
+   url: jdbc:mysql://192.168.1.78:3306/mail?useUnicode=true&characterEncoding=utf-8&autoReconnect=true
    driverClassName: com.mysql.jdbc.Driver
    username: root
    password: 123456

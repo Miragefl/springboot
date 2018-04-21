@@ -2,6 +2,7 @@ package com.bhz.mail;
 
 import com.bhz.mail.entity.MstDict;
 import com.bhz.mail.mapper.MstDictMapper;
+import com.bhz.mail.service.MstDictService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -37,9 +38,19 @@ public class MailProducerApplicationTests {
 
     @Autowired
     private MstDictMapper mstDictMapper;
+    @Autowired
+    private MstDictService mstDictService;
+    @Test
+    public void testService(){
+//        PageHelper.startPage(1,2);
+        List<MstDict> mstDicts = mstDictService.findById("1");
+        for (MstDict md:mstDicts) {
+            System.out.println(md.toString());
+        }
+    }
+
     @Test
     public void testMapper(){
-//        PageHelper.startPage(1,2);
         List<MstDict> mstDicts = mstDictMapper.findById("1");
         for (MstDict md:mstDicts) {
             System.out.println(md.toString());
